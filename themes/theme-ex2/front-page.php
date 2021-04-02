@@ -12,7 +12,7 @@ get_header();
 	<main id="primary" class="site-main">
 
 	<section class="carrousel"> 
-		<article class="slide__conteneur">
+	<article class="slide__conteneur">
 		        <div class="slide">
 				<img src="http://localhost/ex2/wp-content/uploads/2021/03/3.jpg" alt="">
 				<div class="slide__info">
@@ -47,7 +47,6 @@ get_header();
 		<input type='radio' name="rad-carrousel">
 		<input type='radio' name="rad-carrousel">
 		<input type='radio' name="rad-carrousel">
-		
 </section>
 		
 
@@ -68,29 +67,27 @@ get_header();
 
 			while ( have_posts() ) :
 				the_post();
-              convertir_tableau($tPropriete);
-				if ($precedent != $tPropriete['typeCours']): ?>
+                $titre_grand = get_the_title();
+				$session = substr($titre_grand, 4,1);
+				$nbHeure = substr($titre_grand,-4,3);
+				$titre = substr($titre_grand,8, -6);
+				$sigle = substr($titre_grand,0, 7);
+				$typecours = get_field('type de cours'); 
+				if ($precedent != $typecours): ?>
 				<?php if($precedent != "XXXXXXX"): ?>
 				</section>
 				<?php endif ?>
                 <section>
 				<?php endif
 				?>
-
-				<h2><?php echo $tPropriete['typeCours']; ?><h2>
-				<?php if($tPropriete['typeCours'] == "web"): ?>
-					<section class = 'carrousel'>
-						<?php else: ?>
-				<section>
-					<?php endif ?>
+				<h2><?php echo $typecours; ?><h2>
+				<article>
+				<p> <?php echo $sigle .  " - " . $nbHeure . " - " . $typecours; ?></p>
+				<a href = "<?php echo get_permalink(); ?>"><?php echo $titre; ?></a>
+				<p> Session: <?php echo $session; ?></p>
+				</article>
 				<?php
-				if($tPropriete['typeCours'] == "web"):
-				 get_template_part( 'template-parts/content', 'carrousel' );
-				else: 
-						get_template_part( 'template-parts/content', 'bloc' );
-				endif;
-				 get_template_part( 'template-parts/content', 'bloc' );
-				$precedent = $tPropriete['typeCours'];
+				$precedent = $typecours;
 			endwhile; ?>
 			</section>
 			
@@ -103,12 +100,3 @@ get_header();
 <?php
 get_sidebar();
 get_footer();
-
-function convertir_tableau(&$tPropriete) {
-	$titre_grand = get_the_title();
-	$tPropriete['session'] = substr($titre_grand, 4,1);
-	$tPropriete['nbHeure']= substr($titre_grand,-4,3);
-	$tPropriete['titre'] = substr($titre_grand,8, -6);
-	$tPropriete['sigle'] = substr($titre_grand,0, 7);
-	$tPropriete['typeCours'] = get_field('type de cours'); 
-}

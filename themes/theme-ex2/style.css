@@ -673,6 +673,7 @@ body {
   margin: 0;
   padding-left: 0;
   background-color: #000;
+  z-index: 15;
 }
 
 .main-navigation ul ul {
@@ -1198,8 +1199,16 @@ body.home::after {
 .carrousel {
   display: flex;
   width: 300vw;
-  height: 50vh;
+  height: 80vh;
   transition: transform .5s;
+}
+
+@media (min-width: 800px) {
+  .carrousel {
+    display: flex;
+    width: 300vw;
+    height: 80vh;
+  }
 }
 
 .carrousel .slide__conteneur {
@@ -1212,8 +1221,24 @@ body.home::after {
 .carrousel .slide__conteneur .slide {
   width: 90%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
+  z-index: 0;
+}
+
+@media (min-width: 500px) {
+  .carrousel .slide__conteneur .slide {
+    flex-direction: row;
+    text-align: initial;
+  }
+}
+
+@media (min-width: 800px) {
+  .carrousel .slide__conteneur .slide {
+    flex-direction: row;
+  }
 }
 
 .carrousel .slide__conteneur .slide:nth-of-type(1) {
@@ -1231,6 +1256,13 @@ body.home::after {
 .carrousel .slide__conteneur .slide img {
   display: block;
   margin: 2%;
+  width: 80%;
+}
+
+@media (min-width: 800px) {
+  .carrousel .slide__conteneur .slide img {
+    width: 45%;
+  }
 }
 
 .carrousel .slide__conteneur .slide .slide__info {
@@ -1249,12 +1281,18 @@ body.home::after {
   font-size: 1.5rem;
 }
 
-#boutonsCarrousel {
+.boutonsCarrousel {
   display: flex;
   justify-content: center;
 }
 
-#boutonsCarrousel input {
-  margin: 2rem;
+.boutonsCarrousel input {
+  margin: 0.5rem;
+}
+
+@media (min-width: 800px) {
+  .boutonsCarrousel input {
+    margin: 1rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */
