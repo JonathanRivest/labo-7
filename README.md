@@ -1,5 +1,9 @@
-# labo5
+# labo7
 
-Site webdev
+Jonathan Rivest
 
-https://e1858237.webdev.cmaisonneuve.qc.ca/designinteractivite/projetsession/
+Labo 7
+
+Site webdev modifié pour le labo 7.
+
+Adresse webdev: https://e1858237.webdev.cmaisonneuve.qc.ca/designinteractivite/projetsession/
